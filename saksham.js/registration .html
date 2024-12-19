@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color:gray;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: black;
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="password"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"], button {
+            width: 100%;
+            background-color: darkslategray;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: darkslategray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register at Friendship Zone</h1>
+    <form id="registrationForm" action="/Users/sakshamdubey/Desktop/saksham web development/saksham.js/confirmation.html" onsubmit="return validateForm()">
+        Name: <input type="text" id="name" name="name" required><br>
+        Email: <input type="email" id="email" name="email" required><br>
+        Age: <input type="number" id="age" name="age" required><br>
+        <input type="submit" value="Register">
+        <button type="button" onclick="location.href= '/Users/sakshamdubey/Desktop/saksham web development/saksham.js/confirmation.html'">Register as Admin</button>
+    </form>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            
+            const nameRegex = /^[a-zA-Z\s]{3,}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const ageRegex = /^\d+$/;
+            
+            if (!nameRegex.test(name)) {
+                alert("Name must be at least 3 characters long and should not contain numbers.");
+                return false;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            if (!ageRegex.test(age) || age < 18) {
+                alert("Individuals below the age of 18 are not allowed to register. Please enter a valid age.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
